@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-theme-main: #66cbb5;
+    --color-theme-main-light: #6fe4ca;
+    --color-theme-main-dark: #49c1a7;
+  }
+
+  /* Hide the scrollbar */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .max-w-1200 {
+    max-width: 1200px;
+  }
+}
