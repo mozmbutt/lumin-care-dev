@@ -235,7 +235,7 @@ const Home: NextPage = () => {
                 </h3>
               </div>
               <div className='mb-4'>
-                <img src='/assets/images/positive_effects.png' alt='five stars' className='mx-auto' />
+                <img src='https://wallpapers.com/images/featured/hd-a5u9zq0a0ymy2dug.jpg' alt='five stars' className='mx-auto' />
               </div>
               <div className='text-center mb-4'>
                 <p className='text-base leading-normal'>
