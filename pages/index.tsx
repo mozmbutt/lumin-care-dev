@@ -183,7 +183,7 @@ const Home: NextPage = () => {
                 <div className='flex items-center mb-1'>
                   <div className='w-[108px] ml-[-10px]'>
                     <Image
-                      src='/assets/images/five-stars.png'
+                      src='/assets/images/five-stars.webp'
                       width={108}
                       height={32}
                       objectFit='contain'
@@ -213,7 +213,7 @@ const Home: NextPage = () => {
               </button>
               <div className='h-fit px-4 my-2 mx-auto w-[350px]'>
                 <Image
-                  src='/assets/images/trust-badges-lumincare.jpg'
+                  src='/assets/images/trust-badges-lumincare.webp'
                   width={260}
                   height={44}
                   objectFit='contain'
@@ -235,7 +235,7 @@ const Home: NextPage = () => {
                 </h3>
               </div>
               <div className='mb-4'>
-                <img src='/assets/images/positive_effects.png' alt='five stars' className='mx-auto' />
+                <img src='/assets/images/positive_effects.webp' alt='five stars' className='mx-auto' />
               </div>
               <div className='text-center mb-4'>
                 <p className='text-base leading-normal'>
@@ -256,7 +256,7 @@ const Home: NextPage = () => {
               </div>
               <div className='mb-2'>
                 <Image
-                  src='/assets/images/Post6_480x480.jpg'
+                  src='/assets/images/slider4.webp'
                   width={480}
                   height={480}
                   objectFit='contain'
@@ -276,7 +276,7 @@ const Home: NextPage = () => {
               </div>
               <div className='mb-1'>
                 <Image
-                  src='/assets/images/NEWDESIGN-picture5-Freetshirt_3_480x480.jpg'
+                  src='/assets/images/slider3.webp'
                   width={480}
                   height={480}
                   objectFit='contain'
@@ -318,7 +318,7 @@ const Home: NextPage = () => {
               </div>
               <div className='mb-4'>
                 <Image
-                  src='/assets/images/NEWDESIGN-picture3-Freetshirt_2_1_480x480.jpg'
+                  src='/assets/images/slider3.webp'
                   width={480}
                   height={480}
                   objectFit='contain'
@@ -345,7 +345,7 @@ const Home: NextPage = () => {
               </div>
               <div className='mb-6'>
                 <img
-                  src='/assets/images/money_back_guarantee.png'
+                  src='/assets/images/money_back_guarantee.webp'
                   alt='Money Back Guarantee!'
                   className='mx-auto'
                 />
@@ -360,7 +360,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <img
-                src='/assets/images/Lumincaredeliveryboxprodpage_480x480.jpg'
+                src='/assets/images/slider1.webp'
                 alt='DeliveryBox'
                 className='rounded-lg mx-auto'
               />
