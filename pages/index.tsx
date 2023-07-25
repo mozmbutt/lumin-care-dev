@@ -7,6 +7,7 @@ import Carousel, { CarouselItem } from 'components/Carousel'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useState } from 'react'
+import reviews from './../reviwes.json'
 
 const Home: NextPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -79,56 +80,69 @@ const Home: NextPage = () => {
 
           {/* Mobile Menu */}
           <ul
-            className={`list-none font-medium no-underline text-xl px-4 md:hidden transition-all duration-500 ease-in overflow-hidden ${
-              isMenuOpen ? 'max-h-32' : 'max-h-0'
-            }`}>
+            className={`list-none font-normal lg:font-medium no-underline text-xl px-6 md:hidden transition-all duration-500 ease-in overflow-hidden ${isMenuOpen ? 'max-h-32' : 'max-h-0'
+              }`}>
             <li className='py-1'>
-              <a href='#'>Home</a>
+              <a className='text-base font-normal lg:font-medium' href='#order-now'>Order Now</a>
             </li>
             <li className='py-1'>
-              <a href='#'>Best Sellers</a>
+              <a className='text-base font-normal lg:font-medium' href='#reviews'>Reviews</a>
             </li>
             <li className='py-1'>
-              <a href='#'>Questions?</a>
-            </li>
-            <li className='py-1'>
-              <a href='#'>Contact Us</a>
+              <a className='text-base font-normal lg:font-medium' href='#questions'>Questions?</a>
             </li>
           </ul>
         </nav>
       </header>
-      <main className='mx-auto max-w-1200'>
+      <main className='mx-auto max-w-1200' id="order-now">
         {/* Product Showcase Section */}
-      
+
         <div className="flex flex-col lg:flex-row">
           <div className='w-full lg:w-1/2 relative'>
             <div className="sticky top-20">
+              {/* Product Info Mobile */}
+              <section className='px-4 my-4 block lg:hidden'>
+                <div>
+                  {/* Product Title */}
+                  <div>
+                    <h1 className='text-[21px] font-bold'>Lumin Care™ Fat Melting Miracle</h1>
+                  </div>
+                  {/* Prodct Review */}
+                  <div className='flex items-center mb-1'>
+                    <div className='w-[108px] ml-[-10px]'>
+                      <Image
+                        src='/assets/images/five-stars.webp'
+                        width={108}
+                        height={32}
+                        objectFit='contain'
+                        alt='five stars'
+                        layout='responsive'
+                      />
+                    </div>
+                    <span className='text-[17px]'>4.8 (2736 Verified Reviews)</span>
+                  </div>
+                  {/* Price */}
+                  <div className='flex text-[19px] gap-[5px] font-bold'>
+                    <span className='text-theme-main'>Rs. 899.00</span>
+                    <span className='text-gray-400 line-through'>Rs. 1,800.00</span>
+                  </div>
+                </div>
+              </section>
+
               {/* Carousel */}
               <section className='px-4 my-4'>
                 <Carousel>
                   <CarouselItem>
-                    {/* <div className='px-1'> */}
-                      <img className='w-full' src="/assets/images/slider1.webp" alt="slider1" />
-                      {/* <div className='h-32 bg-red-700 text-white'>RED</div> */}
-                    {/* </div> */}
+                    <img className='w-full' src="/assets/images/slider1.webp" alt="slider1" />
                   </CarouselItem>
                   <CarouselItem>
-                    {/* <div className='px-1'> */}
-                      {/* <div className='h-32 bg-green-700 text-white '>Green</div> */}
-                      <img className='w-full' src="/assets/images/slider2.webp" alt="slider2" />
-                    {/* </div> */}
+                    <img className='w-full' src="/assets/images/slider2.webp" alt="slider2" />
                   </CarouselItem>
                   <CarouselItem>
-                    {/* <div className='px-1'> */}
-                      {/* <div className='h-32 bg-blue-700 text-white '>Blue</div> */}
-                      <img className='w-full' src="/assets/images/slider3.webp" alt="slider3" />
-                    {/* </div> */}
+                    <img className='w-full' src="/assets/images/slider3.webp" alt="slider3" />
                   </CarouselItem>
                   <CarouselItem>
-                    {/* <div className='px-1'> */}
-                      {/* <div className='h-32 bg-blue-700 text-white '>Blue</div> */}
-                      <img className='w-full' src="/assets/images/slider4.webp" alt="slider4" />
-                    {/* </div> */}
+                    <img className='w-full' src="/assets/images/slider4.webp" alt="slider4" />
                   </CarouselItem>
                 </Carousel>
               </section>
@@ -170,10 +184,10 @@ const Home: NextPage = () => {
               </section>
             </div>
           </div>
-          
+
           <div className='w-full lg:w-1/2'>
-            {/* Product Info */}
-            <section className='px-4 my-4'>
+            {/* Product Info Desktop */}
+            <section className='px-4 my-4 hidden lg:block'>
               <div>
                 {/* Product Title */}
                 <div>
@@ -200,10 +214,10 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </section>
-         
+
             {/* CTA */}
             <section className='px-4 my-4'>
-              <button className='px-3 py-1 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-base rounded-sm shadow-black shadow-sm'>
+              <button className='px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-base rounded drop-shadow-xl'>
                 <div className='flex justify-center items-center gap-2'>
                   <span className='pt-0.5'>
                     <FontAwesomeIcon icon={faCartShopping} className='w-4 h-5' />
@@ -211,6 +225,10 @@ const Home: NextPage = () => {
                   <span className='text-white font-bold'>Buy with Cash On Delivery</span>
                 </div>
               </button>
+            </section>
+
+            {/* Product Description */}
+            <section className='px-4 my-2'>
               <div className='h-fit px-4 my-2 mx-auto w-[350px]'>
                 <Image
                   src='/assets/images/trust-badges-lumincare.webp'
@@ -221,11 +239,7 @@ const Home: NextPage = () => {
                   layout='responsive'
                 />
               </div>
-              {/* <div className='w-full px-6 py-4 bg-theme-main-light rounded-md' /> */}
-            </section>
 
-            {/* Product Description */}
-            <section className='px-4 my-2'>
               <div className='text-center px-1 mb-2 text-xl'>
                 <h3>
                   <strong>
@@ -318,7 +332,7 @@ const Home: NextPage = () => {
               </div>
               <div className='mb-4'>
                 <Image
-                  src='/assets/images/slider3.webp'
+                  src='/assets/images/slider2.webp'
                   width={480}
                   height={480}
                   objectFit='contain'
@@ -367,9 +381,44 @@ const Home: NextPage = () => {
             </section>
           </div>
         </div>
-        
+
+        {/* Reviews Carousel */}
+
+        <section className='p-4 my-4 bg-theme-main-light'>
+          <Carousel itemsToShow={3}>
+            {reviews.map((review: Record<string, string>, index) => {
+              return (
+                <CarouselItem key={index}>
+                  <div className='flex flex-col items-center gap-6'>
+                    <div className="">
+                      <img className="mx-auto rounded-lg" src={review.img} />
+                    </div>
+                    <div className="">
+                      <p className="whitespace-pre-wrap text-center text-base font-normal">
+                        {review.review}
+                      </p>
+                    </div>
+                    <div className="">
+                      <div className="flex items-center gap-4">
+                        <img src={review.user_img} className='w-[60px] h-[60px] rounded-full' />
+                        <h3 className="font-bold text-sm">
+                          {review.review_by}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              )
+            })}
+          </Carousel>
+        </section>
+
         {/* FAQ */}
-        <section className='px-4 my-4'>
+        <section id="questions" className='px-4 my-4'>
+          {/* Product Title */}
+          <div className='px-4 my-14'>
+            <h1 className='text-[23px] font-bold text-center'>Frequently Asked Questions</h1>
+          </div>
           <div className='rounded-lg'>
             <Accordion>
               <Accordion.Header>Does the Fat Melting Miracle really work?</Accordion.Header>
