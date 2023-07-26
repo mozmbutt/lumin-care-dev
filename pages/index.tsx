@@ -9,11 +9,16 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import reviews from './../reviwes.json'
 import CheckoutModal from 'components/CheckoutModal'
+import OTPModal from 'components/OTPModal'
+import ThankYouModal from 'components/ThankYouModal'
 
 const Home: NextPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [itemsToShow, setItemsToShow] = useState(3);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOTPModalOpen, setIsOTPModalOpen] = useState(false)
+  const [isTYModalOpen, setIsTYModalOpen] = useState(false)
+  const [OTP, setOTP] = useState('')
 
   const handleCheckout = () => {
     setIsModalOpen(true);
@@ -22,6 +27,45 @@ const Home: NextPage = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+
+  const handleCheckoutSubmit = (formData) => {
+
+    fetch(`https://2factor.in/API/V1/d0c6f6d9-28a5-11ee-addf-0200cd936042/SMS/${formData.phone}/AUTOGEN2`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the API response if needed
+        if (data.Status == 'Success') {
+          console.log(data.OTP);
+          setIsOTPModalOpen(true)
+          setOTP(data.OTP)
+        } else {
+          alert(data.Details);
+        }
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error('Error:', error);
+      });
+  };
+
+  const handleOTPSubmit = (otp) => {
+    if(otp === OTP){
+      // create order on shopify and redirect to thank you page
+      alert('Success! order will be placed.');
+      setIsOTPModalOpen(false);
+      setIsModalOpen(false);
+      setIsTYModalOpen(true);
+    } else {
+      alert('Error! incorrect OTP');
+    }
+  }
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -255,7 +299,12 @@ const Home: NextPage = () => {
             </section>
 
             {/* Checkout Modal */}
-            <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} />
+            <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCheckoutSubmit}/>
+            {/* OTP Modal */}
+            <OTPModal isOpen={isOTPModalOpen} onClose={() => setIsOTPModalOpen(false)} onSubmit={handleOTPSubmit} />
+            {/* Thank You Modal */}
+            <ThankYouModal isOpen={isTYModalOpen} onClose={() => setIsTYModalOpen(false)} />
+
 
             {/* Product Description */}
             <section className='px-4 my-2'>
