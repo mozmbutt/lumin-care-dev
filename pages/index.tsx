@@ -8,10 +8,20 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import reviews from './../reviwes.json'
+import CheckoutModal from 'components/CheckoutModal'
 
 const Home: NextPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [itemsToShow, setItemsToShow] = useState(3);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -234,7 +244,7 @@ const Home: NextPage = () => {
 
             {/* CTA */}
             <section className='px-4 my-4'>
-              <button className='px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-base rounded drop-shadow-xl'>
+              <button onClick={handleCheckout} className='px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-base rounded drop-shadow-xl'>
                 <div className='flex justify-center items-center gap-2'>
                   <span className='pt-0.5'>
                     <FontAwesomeIcon icon={faCartShopping} className='w-4 h-5' />
@@ -243,6 +253,9 @@ const Home: NextPage = () => {
                 </div>
               </button>
             </section>
+
+            {/* Checkout Modal */}
+            <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} />
 
             {/* Product Description */}
             <section className='px-4 my-2'>
