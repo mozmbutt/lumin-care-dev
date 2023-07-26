@@ -60,7 +60,7 @@ const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
             className="w-full inline-block transition-all duration-500"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            <div className="flex">
+            <div className="flex justify-around gap-8">
               {childrenGroup.map((child: any) => child)}
             </div>
           </div>

@@ -15,11 +15,18 @@
   }
 
   .scrollbar-none {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 
   .max-w-1200 {
     max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .max-w-350 {
+    max-width: 350px;
   }
 }

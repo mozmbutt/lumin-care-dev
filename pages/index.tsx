@@ -6,11 +6,33 @@ import { Accordion } from 'components/Accordion'
 import Carousel, { CarouselItem } from 'components/Carousel'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reviews from './../reviwes.json'
 
 const Home: NextPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [itemsToShow, setItemsToShow] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        // Set 1 if screen is small (less than or equal to 768px)
+        setItemsToShow(1);
+      } else {
+        // Set 3 if screen is large (greater than 768px)
+        setItemsToShow(3);
+      }
+    };
+
+    // Add event listener to update the value when the screen size changes
+    window.addEventListener('resize', handleResize);
+
+    // Call the handleResize function once initially to set the correct value on mount
+    handleResize();
+
+    // Clean up the event listener when the component is unmounted
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div>
@@ -35,37 +57,32 @@ const Home: NextPage = () => {
               />
             </div>
 
-            {/* Menu */}
-            <ul className='list-none font-bold hidden no-underline -ml-10 md:flex md-plus:-ml-11'>
-              <li>
-                <a className='py-[15px] px-[30px]' href='#'>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a className='py-[15px] px-[30px]' href='#'>
-                  Best Sellers
-                </a>
-              </li>
-              <li>
-                <a className='py-[15px] px-[30px]' href='#'>
-                  Questions?
-                </a>
-              </li>
-              <li>
-                <a className='py-[15px] px-[30px]' href='#'>
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-
-            {/* Header Icons */}
             <div className='flex items-center'>
+              {/* Desktop Menu */}
+              <ul className='list-none font-bold hidden no-underline -ml-10 md:flex md-plus:-ml-11'>
+                <li>
+                  <a className='py-[15px] px-[30px]' href='#order-now'>
+                    Order Now
+                  </a>
+                </li>
+                <li>
+                  <a className='py-[15px] px-[30px]' href='#reviews'>
+                    Reviews
+                  </a>
+                </li>
+                <li>
+                  <a className='py-[15px] px-[30px]' href='#questions'>
+                    Questions?
+                  </a>
+                </li>
+              </ul>
+
               {/* Cart */}
               <div className='flex items-start gap relative mr-2'>
                 <FontAwesomeIcon icon={faCartShopping} className='w-7 h-6' />
                 <span className='font-bold text-base absolute -top-3 -right-2'>0</span>
               </div>
+
               {/* Bread Menu */}
               <div
                 className='w-8 h-9 bg-theme-main flex justify-center items-center ml-1 md:hidden'
@@ -94,18 +111,18 @@ const Home: NextPage = () => {
           </ul>
         </nav>
       </header>
-      <main className='mx-auto max-w-1200' id="order-now">
+      <main className='mx-auto' id="order-now">
         {/* Product Showcase Section */}
 
-        <div className="flex flex-col lg:flex-row">
+        <section className="flex flex-col lg:flex-row max-w-1200">
           <div className='w-full lg:w-1/2 relative'>
             <div className="sticky top-20">
               {/* Product Info Mobile */}
-              <section className='px-4 my-4 block lg:hidden'>
+              <section className='px-4 my-4 block lg:hidden max-w-1200'>
                 <div>
                   {/* Product Title */}
                   <div>
-                    <h1 className='text-[21px] font-bold'>Lumin Care™ Fat Melting Miracle</h1>
+                    <h1 className='text-[21px] leading-7 font-bold'>Lumin Care™ Fat Melting Miracle</h1>
                   </div>
                   {/* Prodct Review */}
                   <div className='flex items-center mb-1'>
@@ -130,11 +147,8 @@ const Home: NextPage = () => {
               </section>
 
               {/* Carousel */}
-              <section className='px-4 my-4'>
+              <section className='px-4 my-4 max-w-1200'>
                 <Carousel>
-                  <CarouselItem>
-                    <img className='w-full' src="/assets/images/slider1.webp" alt="slider1" />
-                  </CarouselItem>
                   <CarouselItem>
                     <img className='w-full' src="/assets/images/slider2.webp" alt="slider2" />
                   </CarouselItem>
@@ -144,11 +158,14 @@ const Home: NextPage = () => {
                   <CarouselItem>
                     <img className='w-full' src="/assets/images/slider4.webp" alt="slider4" />
                   </CarouselItem>
+                  <CarouselItem>
+                    <img className='w-full' src="/assets/images/slider1.webp" alt="slider1" />
+                  </CarouselItem>
                 </Carousel>
               </section>
 
               {/* Trust Section */}
-              <section className='px-4 my-4'>
+              <section className='px-4 my-4 max-w-1200'>
                 <div className='flex justify-between w-full'>
                   <div className='flex items-center justify-center gap-2 w-1/2'>
                     <span className='w-10'>
@@ -191,7 +208,7 @@ const Home: NextPage = () => {
               <div>
                 {/* Product Title */}
                 <div>
-                  <h1 className='text-[21px] font-bold'>Lumin Care™ Fat Melting Miracle</h1>
+                  <h1 className='text-[30px] font-bold'>Lumin Care™ Fat Melting Miracle</h1>
                 </div>
                 {/* Prodct Review */}
                 <div className='flex items-center mb-1'>
@@ -229,7 +246,7 @@ const Home: NextPage = () => {
 
             {/* Product Description */}
             <section className='px-4 my-2'>
-              <div className='h-fit px-4 my-2 mx-auto w-[350px]'>
+              <div className='h-fit px-4 my-2 mx-auto max-w-[350px]'>
                 <Image
                   src='/assets/images/trust-badges-lumincare.webp'
                   width={260}
@@ -380,42 +397,54 @@ const Home: NextPage = () => {
               />
             </section>
           </div>
-        </div>
+        </section>
 
         {/* Reviews Carousel */}
-
-        <section className='p-4 my-4 bg-theme-main-light'>
-          <Carousel itemsToShow={3}>
-            {reviews.map((review: Record<string, string>, index) => {
-              return (
-                <CarouselItem key={index}>
-                  <div className='flex flex-col items-center gap-6'>
-                    <div className="">
-                      <img className="mx-auto rounded-lg" src={review.img} />
-                    </div>
-                    <div className="">
-                      <p className="whitespace-pre-wrap text-center text-base font-normal">
-                        {review.review}
-                      </p>
-                    </div>
-                    <div className="">
-                      <div className="flex items-center gap-4">
-                        <img src={review.user_img} className='w-[60px] h-[60px] rounded-full' />
-                        <h3 className="font-bold text-sm">
-                          {review.review_by}
-                        </h3>
+        <section id="reviews" className='p-4 my-4 bg-theme-main-light'>
+          <div className='max-w-1200'>
+            {/* Section Title */}
+            <div className='px-4 mt-10'>
+              <h1 className='text-[23px] font-bold text-center'>2736+ Verified Reviews</h1>
+            </div>
+            <div className='w-[108px] mx-auto mb-10'>
+              <img
+                src='/assets/images/five-stars.webp'
+                width={108}
+                height={32}
+              />
+            </div>
+            <Carousel itemsToShow={itemsToShow}>
+              {reviews.map((review: Record<string, string>, index) => {
+                return (
+                  <CarouselItem key={index}>
+                    <div className='flex flex-col items-center gap-6'>
+                      <div className="">
+                        <img className="mx-auto rounded-lg w-full h-[250px]" src={review.img} />
+                      </div>
+                      <div className="">
+                        <p className="whitespace-pre-wrap text-center text-base font-normal">
+                          {review.review}
+                        </p>
+                      </div>
+                      <div className="">
+                        <div className="flex items-center gap-4">
+                          <img src={review.user_img} className='w-[60px] h-[60px] rounded-full' />
+                          <h3 className="font-bold text-sm">
+                            {review.review_by}
+                          </h3>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              )
-            })}
-          </Carousel>
+                  </CarouselItem>
+                )
+              })}
+            </Carousel>
+          </div>
         </section>
 
         {/* FAQ */}
-        <section id="questions" className='px-4 my-4'>
-          {/* Product Title */}
+        <section id="questions" className='px-4 mt-4 mb-10 max-w-1200'>
+          {/* Section Title */}
           <div className='px-4 my-14'>
             <h1 className='text-[23px] font-bold text-center'>Frequently Asked Questions</h1>
           </div>
@@ -458,7 +487,6 @@ const Home: NextPage = () => {
                 needs and goals of individuals of all genders.
               </Accordion.Body>
             </Accordion>
-
             <Accordion>
               <Accordion.Header>Is it suitable for all body types?</Accordion.Header>
               <Accordion.Body>
@@ -467,7 +495,6 @@ const Home: NextPage = () => {
                 reveal a more toned and sculpted physique.
               </Accordion.Body>
             </Accordion>
-
             <Accordion>
               <Accordion.Header>Are the results permanent?</Accordion.Header>
               <Accordion.Body>
@@ -476,7 +503,6 @@ const Home: NextPage = () => {
                 enjoy your transformed body without worrying about the fat returning.
               </Accordion.Body>
             </Accordion>
-
             <Accordion>
               <Accordion.Header>Can this product be used on specific areas?</Accordion.Header>
               <Accordion.Body>
