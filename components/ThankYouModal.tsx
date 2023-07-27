@@ -2,8 +2,8 @@ const ThankYouModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-30 flex items-center justify-center backdrop-blur-md">
-      <div className="bg-white w-full md:w-[32%] rounded-lg shadow-lg p-8 mx-5 max-h-[90vh] overflow-y-scroll lg:overflow-y-hidden">
+    <div className="fixed inset-0 z-30 flex items-center justify-center backdrop-blur-md overflow-auto">
+      <div className="bg-white w-full md:w-[32%] rounded-lg shadow-lg p-8 mx-5 my-auto">
         <h2 className=" text-center text-2xl font-semibold mb-4">
           You Have Been Selected To Win The Gift!
         </h2>
