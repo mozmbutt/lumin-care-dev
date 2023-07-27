@@ -22,8 +22,51 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
   return (
     <>
       <div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md">
-        <div className="bg-white w-full md:w-[35%] rounded-lg shadow-lg p-4 mx-5">
-          <h2 className="text-xl font-semibold mb-4">Checkout</h2>
+        <div className="bg-white w-full md:w-[25%] rounded-lg shadow-lg p-4 mx-5">
+          <h2 className="font-[500] font-[16px] mb-4">Please fill in the form to order</h2>
+          
+          {/* Product details */}
+          <div className='flex items-center gap-3 justify-between my-2 py-3 border-y'>
+            <div className="flex items-center gap-3">
+              <div className='w-[60px]'>
+                  <img className='rounded' src="https://cdn.shopify.com/s/files/1/0758/7620/4821/files/Bellyburnerserum1.jpg?v=1689074832" />
+                  {/* <div>1</div> */}
+              </div>
+              <div>
+                  <h3 className='font-[500] font-[16px]'>Lumin Care™ Belly Burner Serum</h3>
+              </div>
+            </div>
+            <div className='font-[500] font-[16px]'>Rs. 899.00</div>
+          </div>
+
+          {/* Order Details */}
+          <div className='my-4 bg-slate-100	p-3 rounded'>
+            <div className='flex justify-between my-2'>
+                <span>
+                    Subtotal
+                </span>
+                <span className='font-[700]'>
+                    Rs. 899.00
+                </span>
+            </div>
+            <div className='flex justify-between my-2'>
+                <span>
+                    Shipping
+                </span>
+                <span className='font-[700]'>
+                    Free
+                </span>
+            </div>
+            <div className='border-t flex justify-between py-2 my-2'>
+                <span className='font-[700]'>
+                    Total
+                </span>
+                <span className='font-[700]'>
+                    Rs. 899.00
+                </span>
+            </div>
+        </div>
+
           <form onSubmit={(e) => {
             e.preventDefault()
             onSubmit(formData)
