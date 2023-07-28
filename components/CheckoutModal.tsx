@@ -14,7 +14,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
     address: "",
     city: "",
     state: "",
-    landMark: "",
+    landmark: "",
     postalCode: null,
   });
 
@@ -172,7 +172,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
                   type="text"
                   className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Land Mark"
-                  value={formData.landMark}
+                  value={formData.landmark}
                   name="landmark"
                   onChange={handleChange}
                 />

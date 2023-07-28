@@ -19,6 +19,16 @@ const Home: NextPage = () => {
   const [isOTPModalOpen, setIsOTPModalOpen] = useState(false)
   const [isTYModalOpen, setIsTYModalOpen] = useState(false)
   const [OTP, setOTP] = useState('')
+  const [isDisabled, setIsDisabled] = useState(false)
+  const [checkoutFormData, setCheckoutFormData] = useState({
+    phone: "",
+    fullName: "",
+    address: "",
+    city: "",
+    state: "",
+    landmark: "",
+    postalCode: null,
+  })
 
   const handleCheckout = () => {
     setIsModalOpen(true);
@@ -41,7 +51,7 @@ const Home: NextPage = () => {
       .then((data) => {
         // Handle the API response if needed
         if (data.Status == 'Success') {
-          console.log(data.OTP);
+          setCheckoutFormData(formData)
           setIsOTPModalOpen(true)
           setOTP(data.OTP)
         } else {
@@ -55,14 +65,105 @@ const Home: NextPage = () => {
   };
 
   const handleOTPSubmit = (otp) => {
-    if(otp === OTP){
+    if (otp === OTP) {
+      setIsDisabled(true);
+      const apiKey = 'aa84faee43480d264ac659c1a657d899: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';
+      const shop = 'heatcorestore-3';
+
+      const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
+
+      const shopifyOrderObject = JSON.stringify({
+        "order": {
+          "line_items": [
+            {
+              "variant_id": 45140368326933,
+              "quantity": 1
+            }
+          ],
+          "customer": {
+            "first_name": checkoutFormData.fullName.split(' ')[0],
+            "last_name": checkoutFormData.fullName.split(' ')[1],
+            // "email": "mozmbutt8@gmail.com"
+          },
+          "billing_address": {
+            "first_name": checkoutFormData.fullName.split(' ')[0],
+            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "address1": checkoutFormData.address,
+            "phone": checkoutFormData.phone,
+            "city": checkoutFormData.city,
+            "province": checkoutFormData.state,
+            "country": "India",
+            "zip": checkoutFormData.postalCode
+          },
+          "shipping_address": {
+            "first_name": checkoutFormData.fullName.split(' ')[0],
+            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "address1": checkoutFormData.address,
+            "phone": checkoutFormData.phone,
+            "city": checkoutFormData.city,
+            "province": checkoutFormData.state,
+            "country": "India",
+            "zip": checkoutFormData.postalCode
+          },
+          "currency": "INR",
+          "financial_status": "pending",
+          // "email": "mozmbutt8@gmail.com",
+          "tags": "phone_verified_with_otp",
+          "shipping_lines": [
+            {
+              "title": "Free Shipping",
+              "price": "0.00",
+              "code": "FreeShipping",
+              "source": "shopify",
+              "phone": null,
+              "requested_fulfillment_service_id": null,
+              "delivery_category": null,
+              "carrier_identifier": null,
+              "tax_lines": [
+                {
+                  "price": "0.00",
+                  "rate": 0,
+                  "title": "HST",
+                  "price_set": {
+                    "shop_money": {
+                      "amount": "0.00",
+                      "currency_code": "INR"
+                    },
+                    "presentment_money": {
+                      "amount": "0.00",
+                      "currency_code": "INR"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      });
+
       // create order on shopify and redirect to thank you page
-      alert('Success! order will be placed.');
-      setIsOTPModalOpen(false);
-      setIsModalOpen(false);
-      setIsTYModalOpen(true);
+      fetch(apiUrl, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*',
+          'X-Shopify-Access-Token': apiKey,
+        },
+        body: shopifyOrderObject,
+      })
+        .then(response => response.text())
+        .then(result => {
+          setOTP('');
+          setIsOTPModalOpen(false);
+          setIsModalOpen(false);
+          setIsTYModalOpen(true);
+          setIsDisabled(false);
+        })
+        .catch(error => console.log('error', error));
     } else {
       alert('Error! incorrect OTP');
+      setIsDisabled(false);
     }
   }
 
@@ -203,16 +304,16 @@ const Home: NextPage = () => {
               {/* Carousel */}
               <section className='px-4 my-4 max-w-1200'>
                 <Carousel>
-                  <CarouselItem>
+                  <CarouselItem key={'slider1'}>
                     <img className='w-full' src="/assets/images/slider2.webp" alt="slider2" />
                   </CarouselItem>
-                  <CarouselItem>
+                  <CarouselItem key={'slider2'}>
                     <img className='w-full' src="/assets/images/slider3.webp" alt="slider3" />
                   </CarouselItem>
-                  <CarouselItem>
+                  <CarouselItem key={'slider3'}>
                     <img className='w-full' src="/assets/images/slider4.webp" alt="slider4" />
                   </CarouselItem>
-                  <CarouselItem>
+                  <CarouselItem key={'slider4'}>
                     <img className='w-full' src="/assets/images/slider1.webp" alt="slider1" />
                   </CarouselItem>
                 </Carousel>
@@ -299,9 +400,9 @@ const Home: NextPage = () => {
             </section>
 
             {/* Checkout Modal */}
-            <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCheckoutSubmit}/>
+            <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleCheckoutSubmit} />
             {/* OTP Modal */}
-            <OTPModal isOpen={isOTPModalOpen} onClose={() => setIsOTPModalOpen(false)} onSubmit={handleOTPSubmit} />
+            <OTPModal isOpen={isOTPModalOpen} onClose={() => setIsOTPModalOpen(false)} isDisabled={isDisabled} onSubmit={handleOTPSubmit} />
             {/* Thank You Modal */}
             <ThankYouModal isOpen={isTYModalOpen} onClose={() => setIsTYModalOpen(false)} />
 

@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
 
-const OTPModal = ({ isOpen, onClose, onSubmit }) => {
+const OTPModal = ({ isOpen, onClose, isDisabled, onSubmit }) => {
   const [otp, setOTP] = useState('');
-
-  const handleSubmitOTP = (e) => {
-    e.preventDefault();
-    // Handle OTP submission logic here
-    // You can send the OTP to the server for validation, etc.
-    console.log('Submitted OTP:', otp);
-    // Close the OTP modal after handling the OTP
-    onClose();
-  };
 
   if (!isOpen) return null;
 
@@ -41,7 +32,8 @@ const OTPModal = ({ isOpen, onClose, onSubmit }) => {
             </button>
             <button
               type="submit"
-              className="bg-theme-main hover:bg-theme-main-dark text-white font-bold py-2 px-4 ml-2 rounded"
+              disabled={isDisabled}
+              className="bg-theme-main hover:bg-theme-main-dark text-white font-bold py-2 px-4 ml-2 rounded disabled:opacity-25"
             >
               Submit OTP
             </button>
