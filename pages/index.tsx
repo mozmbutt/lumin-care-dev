@@ -40,39 +40,42 @@ const Home: NextPage = () => {
 
 
   const handleCheckoutSubmit = (formData) => {
+    setOTP('0000')
+    setCheckoutFormData(formData)
+    setIsOTPModalOpen(true)
 
-    fetch(`https://2factor.in/API/V1/d0c6f6d9-28a5-11ee-addf-0200cd936042/SMS/${formData.phone}/AUTOGEN2`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the API response if needed
-        if (data.Status == 'Success') {
-          setCheckoutFormData(formData)
-          setIsOTPModalOpen(true)
-          setOTP(data.OTP)
-        } else {
-          alert(data.Details);
-        }
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error('Error:', error);
-      });
+    // fetch(`https://2factor.in/API/V1/d0c6f6d9-28a5-11ee-addf-0200cd936042/SMS/${formData.phone}/AUTOGEN2`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   }
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // Handle the API response if needed
+    //     if (data.Status == 'Success') {
+    //       setCheckoutFormData(formData)
+    //       setIsOTPModalOpen(true)
+    //       setOTP(data.OTP)
+    //     } else {
+    //       alert(data.Details);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // Handle errors
+    //     console.error('Error:', error);
+    //   });
   };
 
   const handleOTPSubmit = (otp) => {
     if (otp === OTP) {
       setIsDisabled(true);
-      const apiKey = 'aa84faee43480d264ac659c1a657d899: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';
-      const shop = 'heatcorestore-3';
+      // const apiKey = 'aa84faee43480d264ac659c1a657d899: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';
+      // const shop = 'heatcorestore-3';
 
-      const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
-
-      const shopifyOrderObject = JSON.stringify({
+      // const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
+      const apiUrl = 'http://localhost:3000/api/order'
+      const shopifyOrderObject = JSON.stringify({ 
         "order": {
           "line_items": [
             {
@@ -81,13 +84,13 @@ const Home: NextPage = () => {
             }
           ],
           "customer": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[1],
+            "first_name": checkoutFormData.fullName.split(' ')?.[0],
+            "last_name": checkoutFormData.fullName.split(' ')?.[1],
             // "email": "mozmbutt8@gmail.com"
           },
           "billing_address": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "first_name": checkoutFormData.fullName.split(' ')?.[0],
+            "last_name": checkoutFormData.fullName.split(' ')?.[1],
             "address1": checkoutFormData.address,
             "phone": checkoutFormData.phone,
             "city": checkoutFormData.city,
@@ -96,8 +99,8 @@ const Home: NextPage = () => {
             "zip": checkoutFormData.postalCode
           },
           "shipping_address": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "first_name": checkoutFormData.fullName.split(' ')?.[0],
+            "last_name": checkoutFormData.fullName.split(' ')?.[1],
             "address1": checkoutFormData.address,
             "phone": checkoutFormData.phone,
             "city": checkoutFormData.city,
@@ -143,12 +146,13 @@ const Home: NextPage = () => {
 
       // create order on shopify and redirect to thank you page
       fetch(apiUrl, {
-        method: 'POST',
+        method: 'POST', 
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':'*',
-          'X-Shopify-Access-Token': apiKey,
+          'Content-Type': 'application/js on',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': '*',
+          // 'X-Shopify-Access-Token': apiKey,
         },
         body: shopifyOrderObject,
       })
