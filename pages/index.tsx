@@ -68,9 +68,13 @@ const Home: NextPage = () => {
     if (otp === OTP) {
       setIsDisabled(true);
       const apiKey = 'aa84faee43480d264ac659c1a657d899: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';
-      const shop = 'heatcorestore-3';
+      // const shop = 'heatcorestore-3';
 
-      const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
+      // const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
+      const apiUrl = 'http://phplaravel-1061623-3751537.cloudwaysapps.com/api/order';
+
+      const first_name = checkoutFormData.fullName.split(' ')?.[0] || null
+      const last_name = checkoutFormData.fullName.split(' ')?.[1] || null
 
       const shopifyOrderObject = JSON.stringify({
         "order": {
@@ -81,13 +85,12 @@ const Home: NextPage = () => {
             }
           ],
           "customer": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[1],
-            // "email": "mozmbutt8@gmail.com"
+            "first_name": first_name,
+            "last_name": last_name
           },
           "billing_address": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "first_name": first_name,
+            "last_name": last_name,
             "address1": checkoutFormData.address,
             "phone": checkoutFormData.phone,
             "city": checkoutFormData.city,
@@ -96,8 +99,8 @@ const Home: NextPage = () => {
             "zip": checkoutFormData.postalCode
           },
           "shipping_address": {
-            "first_name": checkoutFormData.fullName.split(' ')[0],
-            "last_name": checkoutFormData.fullName.split(' ')[0],
+            "first_name": first_name,
+            "last_name": last_name,
             "address1": checkoutFormData.address,
             "phone": checkoutFormData.phone,
             "city": checkoutFormData.city,
@@ -107,7 +110,6 @@ const Home: NextPage = () => {
           },
           "currency": "INR",
           "financial_status": "pending",
-          // "email": "mozmbutt8@gmail.com",
           "tags": "phone_verified_with_otp",
           "shipping_lines": [
             {
@@ -147,7 +149,7 @@ const Home: NextPage = () => {
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Origin': '*',
           'X-Shopify-Access-Token': apiKey,
         },
         body: shopifyOrderObject,
