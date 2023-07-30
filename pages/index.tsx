@@ -76,11 +76,8 @@ const Home: NextPage = () => {
       setIsDisabled(true);
       const apiKey =
         "aa84faee43480d264ac659c1a657d899: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";
-      // const shop = 'heatcorestore-3';
-
-      // const apiUrl = `https://${shop}.myshopify.com/admin/api/2021-10/orders.json`;
       const apiUrl =
-        "http://phplaravel-1061623-3751537.cloudwaysapps.com/api/order";
+        "https://getlumincare.com/api/order";
 
       const first_name = checkoutFormData.fullName.split(" ")?.[0] || null;
       const last_name = checkoutFormData.fullName.split(" ")?.[1] || null;

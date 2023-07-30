@@ -6,7 +6,7 @@ const OTPModal = ({ isOpen, onClose, isDisabled, onSubmit }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center backdrop-blur-md">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center backdrop-blur-md">
       <div className="bg-white w-full md:w-96 rounded-lg shadow-lg p-4 mx-5">
         <h2 className="text-xl font-semibold mb-4">Enter OTP</h2>
         <form onSubmit={(e) => {
