@@ -66,6 +66,17 @@ const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
           </div>
         ))}
       </div>
+      <div className="flex gap-3 justify-center items-center h-3 lg:h-4 lg:gap-4">
+        {childrenGroups.map((_, index) => (
+          <div
+            onClick={() => setActiveIndex(index)}
+            key={index}
+            className={`rounded-full transition-all cursor-pointer ${
+              activeIndex === index ? "h-3 w-3 lg:h-4 lg:w-4 bg-black" : "h-2 w-2 lg:h-3 lg:w-3 bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

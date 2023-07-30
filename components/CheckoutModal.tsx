@@ -1,7 +1,8 @@
 import {
-  faMapMarker,
+  faLocationDot,
   faPhone,
   faUser,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -30,9 +31,16 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
     <>
       <div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md text-sm md:text-base overflow-auto">
         <div className="bg-white w-[320px] md:w-[500px] rounded-lg shadow-lg p-4 mx-5 my-auto">
-          <h2 className="font-[500] font-[16px] mb-4">
+          <div className="flex justify-between items-center">
+          <h2 className="font-[500] text-sm lg:text-lg">
             Please fill in the form to order
           </h2>
+          <FontAwesomeIcon
+              icon={faXmark}
+              onClick={() => onClose(true)}
+              className="w-4 h-4 lg:w-5 lg:h-5 cursor-pointer"
+            />
+          </div>
 
           {/* Product details */}
           <div className="flex items-center gap-3 justify-between my-2 py-3 border-y">
@@ -70,8 +78,8 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
           </div>
 
           <div className="my-4">
-            <span className="text-lg mb-2">Shipping Method</span>
-            <div className="flex border border-solid border-black px-4 py-2 justify-between items-center rounded-lg">
+            <span className="text-base mb-2 font-bold lg:text-lg">Shipping Method</span>
+            <div className="flex border border-solid border-gray-400 px-4 py-2 justify-between items-center rounded-lg">
               <input type="radio" checked className="w-3 h-3 accent-black" />
               <span className="text-lg">Free</span>
             </div>
@@ -85,12 +93,12 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             }}
           >
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="fullName" className="w-[40%] font-bold mr-1">
+              <label htmlFor="fullName" className="w-[30%] font-bold mr-1">
                 Full Name
                 <span className="text-red-700">*</span>
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
                     icon={faUser}
                     className="w-[14px] h-[14px]"
@@ -99,7 +107,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
                 <input
                   type="text"
                   required
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="focus:outline-0 w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Full Name"
                   value={formData.fullName}
                   name="fullName"
@@ -109,12 +117,12 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="phone" className="w-[40%] font-bold mr-1">
+              <label htmlFor="phone" className="w-[30%] font-bold mr-1">
                 Phone Number
                 <span className="text-red-700">*</span>
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
                     icon={faPhone}
                     className="w-[14px] h-[14px]"
@@ -123,7 +131,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
                 <input
                   type="number"
                   required
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="focus:outline-0 w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Phone Number"
                   value={formData.phone}
                   name="phone"
@@ -133,21 +141,21 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="address" className="w-[40%] font-bold mr-1">
+              <label htmlFor="address" className="w-[30%] font-bold mr-1">
                 Address Details
                 <span className="text-red-700">*</span>
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
-                    icon={faMapMarker}
+                    icon={faLocationDot}
                     className="w-[14px] h-[14px]"
                   />
                 </span>
                 <input
                   type="text"
                   required
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="focus:outline-0 w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Address"
                   value={formData.address}
                   name="address"
@@ -157,20 +165,20 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="landmark" className="w-[40%] font-bold mr-1">
+              <label htmlFor="landmark" className="w-[30%] font-bold mr-1">
                 Landmark
                 {/* <span className="text-red-700">*</span> */}
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
-                    icon={faMapMarker}
+                    icon={faLocationDot}
                     className="w-[14px] h-[14px]"
                   />
                 </span>
                 <input
                   type="text"
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="focus:outline-0 w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Land Mark"
                   value={formData.landmark}
                   name="landmark"
@@ -180,21 +188,21 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="city" className="w-[40%] font-bold mr-1">
+              <label htmlFor="city" className="w-[30%] font-bold mr-1">
                 City
                 <span className="text-red-700">*</span>
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
-                    icon={faMapMarker}
+                    icon={faLocationDot}
                     className="w-[14px] h-[14px]"
                   />
                 </span>
                 <input
                   type="text"
                   required
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="focus:outline-0 w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="City"
                   value={formData.city}
                   name="city"
@@ -204,21 +212,21 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="postalCode" className="w-[40%] font-bold mr-1">
+              <label htmlFor="postalCode" className="w-[30%] font-bold mr-1">
                 Postal Code
                 <span className="text-red-700">*</span>
               </label>
-              <div className="relative w-[60%]">
-                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-10 flex items-center justify-center rounded-tl-lg rounded-bl-lg">
+              <div className="relative w-[70%]">
+                <span className="absolute left-0 bg-[#E1E1E1] w-10 h-[38px] ml-px mt-px flex items-center justify-center rounded-tl-lg rounded-bl-lg">
                   <FontAwesomeIcon
-                    icon={faMapMarker}
+                    icon={faLocationDot}
                     className="w-[14px] h-[14px]"
                   />
                 </span>
                 <input
                   type="number"
                   required
-                  className="w-full pl-14 border border-gray-300 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
+                  className="w-full pl-14 border border-gray-400 rounded-lg h-10 py-2 px-3 placeholder-gray-500"
                   placeholder="Postal Code"
                   value={formData.postalCode}
                   name="postalCode"
@@ -228,12 +236,12 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
             </div>
 
             <div className="mb-4 flex text-md items-center justify-between">
-              <label htmlFor="state" className="w-[40%] font-bold mr-1">
+              <label htmlFor="state" className="w-[30%] font-bold mr-1">
                 State
                 <span className="text-red-700">*</span>
               </label>
               <select
-                className="w-[60%] border border-gray-300 bg-white rounded-lg py-2 px-3 h-10 "
+                className="w-[70%] border border-gray-400 bg-white rounded-lg py-2 px-3 h-10 "
                 name="state"
                 placeholder="State"
                 required
@@ -279,24 +287,16 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
               </select>
             </div>
 
-            <p className="font-bold my-4">
+            <p className="font-bold my-4 text-center">
               For faster delivery of your order, Please make sure the given
               address details are correct.
             </p>
 
             <div className="flex justify-end">
-              <button
-                type="button"
-                className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded"
-                onClick={onClose}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-theme-main hover:bg-theme-main-dark text-white font-bold py-2 px-4 ml-2 rounded"
-              >
-                Place Order
+            <button type="submit" className='px-3 py-2 lg:py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-sm rounded drop-shadow-xl sticky bottom-1/2 lg:text-base '>
+                <div className='flex justify-center items-center gap-2'>
+                  <span className='text-white font-bold'>BUY IT NOW (Place My Order)</span>
+                </div>
               </button>
             </div>
           </form>
