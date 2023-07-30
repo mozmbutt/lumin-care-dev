@@ -201,9 +201,15 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (!buttonRef.current || !buttonContainerRef.current) return;
-  
+
     const button: any = buttonRef.current;
     const buttonContainer: any = buttonContainerRef.current;
+
+    if(isModalOpen) {
+      button.style.position = "relative";
+      button.style.zIndex = 0;
+      return
+    }
 
     function checkVisibility() {
       const rect = buttonContainer.getBoundingClientRect();
@@ -214,14 +220,14 @@ const Home: NextPage = () => {
         button.style.zIndex = 50;
       } else {
         button.style.position = "relative";
-        button.style.zIndex = undefined;
+        button.style.zIndex = 0;
       }
     }
 
     window.addEventListener("scroll", checkVisibility);
 
     return () => window.removeEventListener('scroll', checkVisibility)
-  }, [buttonRef.current, buttonContainerRef.current]);
+  }, [buttonRef.current, buttonContainerRef.current, isModalOpen]);
 
   return (
     <div>
