@@ -15,6 +15,7 @@ import reviews from "./../reviwes.json";
 import CheckoutModal from "components/CheckoutModal";
 import OTPModal from "components/OTPModal";
 import ThankYouModal from "components/ThankYouModal";
+import SmoothScrollLink from "components/SmoothScrollLink";
 
 const Home: NextPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
   const [isTYModalOpen, setIsTYModalOpen] = useState(false);
   const [OTP, setOTP] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+
   const [checkoutFormData, setCheckoutFormData] = useState({
     phone: "",
     fullName: "",
@@ -239,6 +241,7 @@ const Home: NextPage = () => {
           <div className="flex justify-between px-2 items-center mx-auto max-w-1200">
             {/* Header Logo */}
             <div className="w-40 md:w-[200px] rounded-lg">
+            <SmoothScrollLink href="#__next" onClick={() => setIsMenuOpen(false)}>
               <Image
                 src="/assets/images/lumin-care-logo.png"
                 width={141}
@@ -248,6 +251,7 @@ const Home: NextPage = () => {
                 layout="responsive"
                 className="rounded-lg"
               />
+            </SmoothScrollLink>
             </div>
 
             <div className="flex items-center">
@@ -301,49 +305,34 @@ const Home: NextPage = () => {
             }`}
           >
             <li className="py-1">
-              <a
-                className="text-base font-normal lg:font-medium"
-                href="#order-now"
-              >
-                Order Now
-              </a>
+              <SmoothScrollLink href="#order-now" onClick={() => setIsMenuOpen(false)}>Order Now</SmoothScrollLink>
             </li>
             <li className="py-1">
-              <a
-                className="text-base font-normal lg:font-medium"
-                href="#reviews"
-              >
-                Reviews
-              </a>
+              <SmoothScrollLink href="#reviews" onClick={() => setIsMenuOpen(false)}>Reviews</SmoothScrollLink>
             </li>
-            <li className="py-1">
-              <a
-                className="text-base font-normal lg:font-medium"
-                href="#questions"
-              >
-                Questions?
-              </a>
+            <li className="py-1 pb-2">
+              <SmoothScrollLink href="#questions" onClick={() => setIsMenuOpen(false)}>Questions?</SmoothScrollLink>
             </li>
           </ul>
         </nav>
       </header>
-      <main className="mx-auto" id="order-now">
+      <main className="mx-auto" id="order-now" style={{ scrollPaddingTop: "2000px" }}>
         {/* Product Showcase Section */}
 
         <section className="flex flex-col lg:flex-row max-w-1200">
           <div className="w-full -mt-3 lg:w-1/2 relative lg:mt-0">
             <div className="sticky top-20">
               {/* Product Info Mobile */}
-              <section className="px-4 my-2 block lg:my-4 lg:hidden max-w-1200">
+              <section className="px-4 my-4 block lg:my-4 lg:hidden max-w-1200">
                 <div>
                   {/* Product Title */}
                   <div>
-                    <h1 className="text-lg lg:text-xl font-bold">
+                    <h1 className="text-xl font-bold">
                       Lumin Care™ Fat Melting Miracle
                     </h1>
                   </div>
                   {/* Prodct Review */}
-                  <div className="flex items-center leading-[0.7] -mt-2 lg:mt-0 lg:leading-normal">
+                  <div className="flex items-center leading-[0.7] lg:mt-0 lg:leading-normal">
                     <div className="w-[108px] ml-[-10px]">
                       <Image
                         src="/assets/images/five-stars.webp"
@@ -483,7 +472,7 @@ const Home: NextPage = () => {
               <button
                 onClick={handleCheckout}
                 ref={buttonRef}
-                className="px-3 py-2 lg:py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-sm rounded drop-shadow-xl sticky bottom-1/2 lg:text-base "
+                className="px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-sm rounded drop-shadow-xl sticky bottom-1/2 lg:text-base "
               >
                 <div className="flex justify-center items-center gap-2">
                   <span className="pt-0.5">
@@ -697,7 +686,7 @@ const Home: NextPage = () => {
         </section>
 
         {/* Reviews Carousel */}
-        <section id="reviews" className="p-4 my-4 bg-theme-main-light">
+        <section style={{ scrollPaddingTop: "2000px" }} id="reviews" className="p-4 my-4 bg-theme-main-light">
           <div className="max-w-1200">
             {/* Section Title */}
             <div className="px-4 mt-10">
@@ -748,7 +737,7 @@ const Home: NextPage = () => {
         </section>
 
         {/* FAQ */}
-        <section id="questions" className="px-4 mt-4 mb-10 max-w-1200">
+        <section style={{ scrollPaddingTop: "2000px" }} id="questions" className="px-4 mt-4 mb-10 max-w-1200">
           {/* Section Title */}
           <div className="px-4 my-14">
             <h1 className="text-[23px] font-bold text-center">

@@ -57,7 +57,7 @@ const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
       <div className="whitespace-nowrap overflow-hidden">
         {childrenGroups.map((childrenGroup) => (
           <div
-            className="w-full inline-block transition-all duration-500"
+            className="w-full inline-block transition-all duration-500 align-top"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
             <div className="flex justify-around gap-8">
@@ -66,7 +66,7 @@ const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
           </div>
         ))}
       </div>
-      <div className="flex gap-3 justify-center items-center h-3 lg:h-4 lg:gap-4">
+      <div className="flex gap-3 justify-center items-center h-3 lg:h-4 lg:gap-4 mt-2">
         {childrenGroups.map((_, index) => (
           <div
             onClick={() => setActiveIndex(index)}
