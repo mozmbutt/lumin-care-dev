@@ -363,7 +363,6 @@ const Home: NextPage = () => {
                 <Carousel>
                   <CarouselItem key={"slider1"}>
                     <img
-                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_8.webp"
                       alt="Lumincare_new_8"
