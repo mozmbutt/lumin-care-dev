@@ -23,13 +23,13 @@ const ThankYouModal = ({ isOpen, onClose }) => {
           Your package will arrive in our branded box, so please keep an eye out for it when our drivers deliver the product to your doorstep. Our branded box is easy to spot, and it ensures that your order arrives safely and securely
         </p>
 
-        <img src="/assets/images/slider1.webp" className="rounded mx-auto mt-4 w-[65%]" alt="" />
+        <img loading="lazy" src="/assets/images/slider1.webp" className="rounded mx-auto mt-4 w-[65%]" alt="" />
         
         <h2 className=" text-center text-xl font-semibold mt-6">
           Pay On Delivery With:
         </h2>
 
-        <img src="/assets/images/ty-page-logos.jpeg" className="mx-auto mt-2 w-[65%]" alt="" />
+        <img loading="lazy" src="/assets/images/ty-page-logos.jpeg" className="mx-auto mt-2 w-[65%]" alt="" />
 
         <button
           type="submit"

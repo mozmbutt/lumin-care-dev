@@ -250,6 +250,7 @@ const Home: NextPage = () => {
                 alt="lumin care logo"
                 layout="responsive"
                 className="rounded-lg"
+                loading="lazy"
               />
             </SmoothScrollLink>
             </div>
@@ -334,13 +335,13 @@ const Home: NextPage = () => {
                   {/* Prodct Review */}
                   <div className="flex items-center leading-[0.7] lg:mt-0 lg:leading-normal">
                     <div className="w-[108px] ml-[-10px]">
-                      <Image
+                      <img
+                        loading="lazy"
                         src="/assets/images/five-stars.webp"
                         width={108}
                         height={32}
-                        objectFit="contain"
                         alt="five stars"
-                        layout="responsive"
+                        className="mx-auto"
                       />
                     </div>
                     <span className="text-sm lg:text-base">
@@ -362,6 +363,7 @@ const Home: NextPage = () => {
                 <Carousel>
                   <CarouselItem key={"slider1"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_8.webp"
                       alt="Lumincare_new_8"
@@ -369,6 +371,7 @@ const Home: NextPage = () => {
                   </CarouselItem>
                   <CarouselItem key={"slider2"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_3.webp"
                       alt="Lumincare_new_3"
@@ -376,6 +379,7 @@ const Home: NextPage = () => {
                   </CarouselItem>
                   <CarouselItem key={"slider3"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_7.webp"
                       alt="Lumincare_new_7"
@@ -383,6 +387,7 @@ const Home: NextPage = () => {
                   </CarouselItem>
                   <CarouselItem key={"slider4"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_5.webp"
                       alt="Lumincare_new_5"
@@ -390,6 +395,7 @@ const Home: NextPage = () => {
                   </CarouselItem>
                   <CarouselItem key={"slider5"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/Lumincare_new_4.webp"
                       alt="Lumincare_new_4"
@@ -397,6 +403,7 @@ const Home: NextPage = () => {
                   </CarouselItem>
                   <CarouselItem key={"slider6"}>
                     <img
+                      loading="lazy"
                       className="w-full rounded-lg"
                       src="/assets/images/slider1.webp"
                       alt="slider1"
@@ -410,13 +417,13 @@ const Home: NextPage = () => {
                 <div className="flex justify-between w-full">
                   <div className="flex items-center justify-center gap-2 w-1/2">
                     <span className="w-10">
-                      <Image
+                      <img
+                        loading="lazy"
                         src="/assets/images/TrustIcon_clinically_studied.png"
                         width={30}
                         height={32}
-                        objectFit="contain"
                         alt="five stars"
-                        layout="responsive"
+                        className="mx-auto"
                       />
                     </span>
                     <span className="">
@@ -425,13 +432,12 @@ const Home: NextPage = () => {
                   </div>
                   <div className="flex items-center justify-center gap-2 w-1/2">
                     <span className="w-10">
-                      <Image
+                      <img
+                        loading="lazy"
                         src="/assets/images/TrustIcon_No_SIde_Effect.png"
                         width={30}
                         height={32}
-                        objectFit="contain"
                         alt="five stars"
-                        layout="responsive"
                       />
                     </span>
                     <span className="">
@@ -456,13 +462,12 @@ const Home: NextPage = () => {
                 {/* Prodct Review */}
                 <div className="flex items-center mb-1">
                   <div className="w-[108px] ml-[-10px]">
-                    <Image
+                    <img
+                      loading="lazy"
                       src="/assets/images/five-stars.webp"
                       width={108}
                       height={32}
-                      objectFit="contain"
                       alt="five stars"
-                      layout="responsive"
                     />
                   </div>
                   <span className="text-[17px]">
@@ -524,13 +529,13 @@ const Home: NextPage = () => {
             {/* Product Description */}
             <section className="px-4 my-2">
               <div className="h-fit px-4 my-2 mx-auto max-w-[350px]">
-                <Image
+                <img
+                  loading="lazy"
                   src="/assets/images/trust-badges-lumincare.webp"
                   width={260}
                   height={44}
-                  objectFit="contain"
                   alt="five stars"
-                  layout="responsive"
+                  className="mx-auto"
                 />
               </div>
 
@@ -544,6 +549,7 @@ const Home: NextPage = () => {
               </div>
               <div className="mb-4">
                 <img
+                  loading="lazy"
                   src="/assets/images/positive_effects.webp"
                   alt="five stars"
                   className="mx-auto"
@@ -570,14 +576,13 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <div className="mb-2 rounded-lg">
-                <Image
+                <img
+                  loading="lazy"
                   src="/assets/images/Lumincare_new_3.webp"
                   width={480}
                   height={480}
-                  objectFit="contain"
                   alt="burn fat"
-                  layout="responsive"
-                  className="rounded-lg"
+                  className="rounded-lg mx-auto"
                 />
               </div>
               <div className="text-center">
@@ -595,14 +600,13 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <div className="mb-1 rounded-lg">
-                <Image
+                <img
+                  loading="lazy"
                   src="/assets/images/Lumincare_new_7.webp"
                   width={480}
                   height={480}
-                  objectFit="contain"
                   alt="Amazing Results!"
-                  layout="responsive"
-                  className="rounded-lg"
+                  className="rounded-lg mx-auto"
                 />
               </div>
               <div className="text-center mb-4">
@@ -642,14 +646,13 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <div className="mb-4 rounded-lg">
-                <Image
+                <img
+                  loading="lazy"
                   src="/assets/images/Lumincare_new_4.webp"
                   width={480}
                   height={480}
-                  objectFit="contain"
                   alt="Amazing Results!"
-                  layout="responsive"
-                  className="rounded-lg"
+                  className="rounded-lg mx-auto"
                 />
               </div>
               <div className="text-center">
@@ -675,6 +678,7 @@ const Home: NextPage = () => {
               </div>
               <div className="mb-6">
                 <img
+                  loading="lazy"
                   src="/assets/images/money_back_guarantee.webp"
                   alt="Money Back Guarantee!"
                   className="mx-auto rounded-lg"
@@ -691,6 +695,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <img
+                loading="lazy"
                 src="/assets/images/slider1.webp"
                 alt="DeliveryBox"
                 className="rounded-lg mx-auto"
@@ -710,6 +715,7 @@ const Home: NextPage = () => {
             </div>
             <div className="w-[108px] mx-auto mb-10">
               <img
+                loading="lazy"
                 src="/assets/images/five-stars.webp"
                 width={108}
                 height={32}
@@ -722,6 +728,7 @@ const Home: NextPage = () => {
                     <div className="flex flex-col items-center gap-6">
                       <div className="">
                         <img
+                          loading="lazy"
                           className="mx-auto rounded-lg w-full h-[250px]"
                           src={review.img}
                         />
@@ -734,6 +741,7 @@ const Home: NextPage = () => {
                       <div className="">
                         <div className="flex items-center gap-4">
                           <img
+                            loading="lazy"
                             src={review.user_img}
                             className="w-[60px] h-[60px] rounded-full"
                           />
