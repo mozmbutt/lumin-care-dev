@@ -363,25 +363,39 @@ const Home: NextPage = () => {
                   <CarouselItem key={"slider1"}>
                     <img
                       className="w-full rounded-lg"
-                      src="/assets/images/slider2.webp"
-                      alt="slider2"
+                      src="/assets/images/Lumincare_new_8.webp"
+                      alt="Lumincare_new_8"
                     />
                   </CarouselItem>
                   <CarouselItem key={"slider2"}>
                     <img
                       className="w-full rounded-lg"
-                      src="/assets/images/slider3.webp"
-                      alt="slider3"
+                      src="/assets/images/Lumincare_new_3.webp"
+                      alt="Lumincare_new_3"
                     />
                   </CarouselItem>
                   <CarouselItem key={"slider3"}>
                     <img
                       className="w-full rounded-lg"
-                      src="/assets/images/slider4.webp"
-                      alt="slider4"
+                      src="/assets/images/Lumincare_new_7.webp"
+                      alt="Lumincare_new_7"
                     />
                   </CarouselItem>
                   <CarouselItem key={"slider4"}>
+                    <img
+                      className="w-full rounded-lg"
+                      src="/assets/images/Lumincare_new_5.webp"
+                      alt="Lumincare_new_5"
+                    />
+                  </CarouselItem>
+                  <CarouselItem key={"slider5"}>
+                    <img
+                      className="w-full rounded-lg"
+                      src="/assets/images/Lumincare_new_4.webp"
+                      alt="Lumincare_new_4"
+                    />
+                  </CarouselItem>
+                  <CarouselItem key={"slider6"}>
                     <img
                       className="w-full rounded-lg"
                       src="/assets/images/slider1.webp"
@@ -557,7 +571,7 @@ const Home: NextPage = () => {
               </div>
               <div className="mb-2 rounded-lg">
                 <Image
-                  src="/assets/images/slider4.webp"
+                  src="/assets/images/Lumincare_new_3.webp"
                   width={480}
                   height={480}
                   objectFit="contain"
@@ -582,7 +596,7 @@ const Home: NextPage = () => {
               </div>
               <div className="mb-1 rounded-lg">
                 <Image
-                  src="/assets/images/slider3.webp"
+                  src="/assets/images/Lumincare_new_7.webp"
                   width={480}
                   height={480}
                   objectFit="contain"
@@ -629,7 +643,7 @@ const Home: NextPage = () => {
               </div>
               <div className="mb-4 rounded-lg">
                 <Image
-                  src="/assets/images/slider2.webp"
+                  src="/assets/images/Lumincare_new_4.webp"
                   width={480}
                   height={480}
                   objectFit="contain"
