@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "components/Accordion";
-import Carousel, { CarouselItem } from "components/Carousel";
+import  { CarouselItem, Carousel } from "components/Carousel";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
