@@ -553,7 +553,7 @@ const Home: NextPage = () => {
                   alt="five stars"
                   className="mx-auto"
                 />
-              </div>
+              </div>  
               <div className="text-center mb-4">
                 <p className="text-base leading-normal">
                   <span>This</span>
