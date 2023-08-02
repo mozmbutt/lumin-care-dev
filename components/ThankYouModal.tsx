@@ -29,7 +29,7 @@ const ThankYouModal = ({ isOpen, onClose }) => {
           Pay On Delivery With:
         </h2>
 
-        <img loading="lazy" src="/assets/images/ty-page-logos.jpeg" className="mx-auto mt-2 w-[65%]" alt="" />
+        <img loading="lazy" src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/8cb3e160-61c0-40cd-54df-e3bee5663d00/public" className="mx-auto mt-2 w-[65%]" alt="" />
 
         <button
           type="submit"

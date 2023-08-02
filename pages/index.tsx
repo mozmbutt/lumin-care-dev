@@ -243,7 +243,7 @@ const Home: NextPage = () => {
             <div className="w-40 md:w-[200px] rounded-lg">
             <SmoothScrollLink href="#__next" onClick={() => setIsMenuOpen(false)}>
               <Image
-                src="/assets/images/lumin-care-logo.png"
+                src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/c9c921be-33e1-4c38-5996-7aa66e933100/public"
                 width={141}
                 height={52}
                 objectFit="contain"
@@ -337,7 +337,7 @@ const Home: NextPage = () => {
                     <div className="w-[108px] ml-[-10px]">
                       <img
                         loading="lazy"
-                        src="/assets/images/five-stars.webp"
+                        src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/16210081-756f-4d28-967d-e6163785d800/public"
                         width={108}
                         height={32}
                         alt="five stars"
@@ -364,7 +364,7 @@ const Home: NextPage = () => {
                   <CarouselItem key={"slider1"}>
                     <img
                       className="w-full rounded-lg"
-                      src="/assets/images/Lumincare_new_8.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/4c0f5e5b-de72-4125-941a-9ead5b3e7900/public"
                       alt="Lumincare_new_8"
                     />
                   </CarouselItem>
@@ -372,7 +372,7 @@ const Home: NextPage = () => {
                     <img
                       loading="lazy"
                       className="w-full rounded-lg"
-                      src="/assets/images/Lumincare_new_3.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/13f4339e-4314-4da7-4f6d-2476ad4c9500/public"
                       alt="Lumincare_new_3"
                     />
                   </CarouselItem>
@@ -380,7 +380,7 @@ const Home: NextPage = () => {
                     <img
                       loading="lazy"
                       className="w-full rounded-lg"
-                      src="/assets/images/Lumincare_new_7.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/fc1d563f-28ee-4dee-35a5-7ed7d158db00/public"
                       alt="Lumincare_new_7"
                     />
                   </CarouselItem>
@@ -388,7 +388,7 @@ const Home: NextPage = () => {
                     <img
                       loading="lazy"
                       className="w-full rounded-lg"
-                      src="/assets/images/Lumincare_new_5.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/aa2a1321-835a-4ff0-4233-707396b99e00/public"
                       alt="Lumincare_new_5"
                     />
                   </CarouselItem>
@@ -396,7 +396,7 @@ const Home: NextPage = () => {
                     <img
                       loading="lazy"
                       className="w-full rounded-lg"
-                      src="/assets/images/Lumincare_new_4.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/38273313-701e-400a-c3b9-4ddc3ee7ce00/public"
                       alt="Lumincare_new_4"
                     />
                   </CarouselItem>
@@ -404,7 +404,7 @@ const Home: NextPage = () => {
                     <img
                       loading="lazy"
                       className="w-full rounded-lg"
-                      src="/assets/images/slider1.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/489a197f-ffc0-4a93-2903-b702653acb00/public"
                       alt="slider1"
                     />
                   </CarouselItem>
@@ -418,7 +418,7 @@ const Home: NextPage = () => {
                     <span className="w-10">
                       <img
                         loading="lazy"
-                        src="/assets/images/TrustIcon_clinically_studied.png"
+                        src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/f54a7ac2-a587-4e3f-3821-b1eff3232900/public"
                         width={30}
                         height={32}
                         alt="five stars"
@@ -433,7 +433,7 @@ const Home: NextPage = () => {
                     <span className="w-10">
                       <img
                         loading="lazy"
-                        src="/assets/images/TrustIcon_No_SIde_Effect.png"
+                        src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/7160d2c8-da6f-4caf-dfe9-f110e5261d00/public"
                         width={30}
                         height={32}
                         alt="five stars"
@@ -463,7 +463,7 @@ const Home: NextPage = () => {
                   <div className="w-[108px] ml-[-10px]">
                     <img
                       loading="lazy"
-                      src="/assets/images/five-stars.webp"
+                      src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/16210081-756f-4d28-967d-e6163785d800/public"
                       width={108}
                       height={32}
                       alt="five stars"
@@ -530,7 +530,7 @@ const Home: NextPage = () => {
               <div className="h-fit px-4 my-2 mx-auto max-w-[350px]">
                 <img
                   loading="lazy"
-                  src="/assets/images/trust-badges-lumincare.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/a094b211-0ced-4264-59fb-c187ec4a2200/public"
                   width={260}
                   height={44}
                   alt="five stars"
@@ -549,7 +549,7 @@ const Home: NextPage = () => {
               <div className="mb-4">
                 <img
                   loading="lazy"
-                  src="/assets/images/positive_effects.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/0abf8f2a-8632-4a29-dcec-9bdeb7756100/public"
                   alt="five stars"
                   className="mx-auto"
                 />
@@ -577,7 +577,7 @@ const Home: NextPage = () => {
               <div className="mb-2 rounded-lg">
                 <img
                   loading="lazy"
-                  src="/assets/images/Lumincare_new_3.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/aa2a1321-835a-4ff0-4233-707396b99e00/public"
                   width={480}
                   height={480}
                   alt="burn fat"
@@ -601,7 +601,7 @@ const Home: NextPage = () => {
               <div className="mb-1 rounded-lg">
                 <img
                   loading="lazy"
-                  src="/assets/images/Lumincare_new_7.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/fc1d563f-28ee-4dee-35a5-7ed7d158db00/public"
                   width={480}
                   height={480}
                   alt="Amazing Results!"
@@ -647,7 +647,7 @@ const Home: NextPage = () => {
               <div className="mb-4 rounded-lg">
                 <img
                   loading="lazy"
-                  src="/assets/images/Lumincare_new_4.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/38273313-701e-400a-c3b9-4ddc3ee7ce00/public"
                   width={480}
                   height={480}
                   alt="Amazing Results!"
@@ -678,7 +678,7 @@ const Home: NextPage = () => {
               <div className="mb-6">
                 <img
                   loading="lazy"
-                  src="/assets/images/money_back_guarantee.webp"
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/1c93b6b1-a2cf-49c4-0c51-79471997fb00/public"
                   alt="Money Back Guarantee!"
                   className="mx-auto rounded-lg"
                 />
@@ -695,7 +695,7 @@ const Home: NextPage = () => {
               </div>
               <img
                 loading="lazy"
-                src="/assets/images/slider1.webp"
+                src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/489a197f-ffc0-4a93-2903-b702653acb00/public"
                 alt="DeliveryBox"
                 className="rounded-lg mx-auto"
               />
@@ -715,7 +715,7 @@ const Home: NextPage = () => {
             <div className="w-[108px] mx-auto mb-10">
               <img
                 loading="lazy"
-                src="/assets/images/five-stars.webp"
+                src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/16210081-756f-4d28-967d-e6163785d800/public"
                 width={108}
                 height={32}
               />
