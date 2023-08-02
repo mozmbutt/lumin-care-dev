@@ -7,6 +7,8 @@ export const CarouselItem: React.FC<any> = ({ children }) => (
 
 export const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false)
+  
   const childrenGroups = useMemo(() => {
     const childrenArray: any = [];
     if (children?.length === 0) return childrenArray;
@@ -24,10 +26,14 @@ export const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
     getCurrentActiveItem,
   } = useSpringCarousel({
     withLoop: true,
+
     items: childrenGroups?.map((group, index) => ({
       id: index,
       renderItem: (
-        <div className="flex justify-center items-center w-full gap-5">
+        <div 
+        onMouseOver={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="flex justify-center items-center w-full gap-5">
           {group}
         </div>
       ),
@@ -41,20 +47,24 @@ export const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      if(isPaused) return
       slideToNextItem();
       const currentItemIndex = getCurrentActiveItem().index;
       setActiveIndex(currentItemIndex);
-    }, 2500);
+    }, 3000);
 
     return () => {
-      clearTimeout(timer);
+      if(timer){
+        clearTimeout(timer);
+      }
+      
     };
   });
 
   return (
     <div>
       <div className="overflow-hidden">{carouselFragment}</div>
-      <div className="flex gap-3 justify-center items-center h-3 lg:h-4 lg:gap-4 mt-4">
+      <div className="flex gap-3 justify-center items-center h-3 lg:h-4 lg:gap-4 mt-3">
         {childrenGroups.map((_, index) => (
           <div
             onClick={() => {

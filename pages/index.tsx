@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "components/Accordion";
-import  { CarouselItem, Carousel } from "components/Carousel";
+import { CarouselItem, Carousel } from "components/Carousel";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   const [isTYModalOpen, setIsTYModalOpen] = useState(false);
   const [OTP, setOTP] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [showBottomCTAButton, setShowBottomCTAButton] = useState(false);
 
   const [checkoutFormData, setCheckoutFormData] = useState({
     phone: "",
@@ -36,8 +37,7 @@ const Home: NextPage = () => {
     postalCode: null,
   });
 
-  const buttonRef = useRef();
-  const buttonContainerRef = useRef(); 
+  const buttonContainerRef = useRef();
   const handleCheckout = () => {
     setIsModalOpen(true);
   };
@@ -78,8 +78,7 @@ const Home: NextPage = () => {
       setIsDisabled(true);
       const apiKey =
         "aa84faee43480d264ac659c1a657d899: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";
-      const apiUrl =
-        "https://getlumincare.com/api/order";
+      const apiUrl = "https://getlumincare.com/api/order";
 
       const first_name = checkoutFormData.fullName.split(" ")?.[0] || null;
       const last_name = checkoutFormData.fullName.split(" ")?.[1] || null;
@@ -199,34 +198,28 @@ const Home: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!buttonRef.current || !buttonContainerRef.current) return;
+    if (!buttonContainerRef.current) return;
 
-    const button: any = buttonRef.current;
     const buttonContainer: any = buttonContainerRef.current;
 
-    if(isModalOpen) {
-      button.style.position = "relative";
-      button.style.zIndex = 0;
-      return
+    if (isModalOpen) {
+      setShowBottomCTAButton(false);
+      return;
     }
 
     function checkVisibility() {
       const rect = buttonContainer.getBoundingClientRect();
       if (rect.bottom <= 0) {
-        button.style.position = "fixed";
-        button.style.bottom = "0";
-        button.style.left = "0";
-        button.style.zIndex = 50;
+        setShowBottomCTAButton(true);
       } else {
-        button.style.position = "relative";
-        button.style.zIndex = 0;
+        setShowBottomCTAButton(false);
       }
     }
 
     window.addEventListener("scroll", checkVisibility);
 
-    return () => window.removeEventListener('scroll', checkVisibility)
-  }, [buttonRef.current, buttonContainerRef.current, isModalOpen]);
+    return () => window.removeEventListener("scroll", checkVisibility);
+  }, [buttonContainerRef.current, isModalOpen]);
 
   return (
     <div>
@@ -241,18 +234,21 @@ const Home: NextPage = () => {
           <div className="flex justify-between px-2 items-center mx-auto max-w-1200">
             {/* Header Logo */}
             <div className="w-40 md:w-[200px] rounded-lg">
-            <SmoothScrollLink href="#__next" onClick={() => setIsMenuOpen(false)}>
-              <Image
-                src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/c9c921be-33e1-4c38-5996-7aa66e933100/public"
-                width={141}
-                height={52}
-                objectFit="contain"
-                alt="lumin care logo"
-                layout="responsive"
-                className="rounded-lg"
-                loading="lazy"
-              />
-            </SmoothScrollLink>
+              <SmoothScrollLink
+                href="#__next"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Image
+                  src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/c9c921be-33e1-4c38-5996-7aa66e933100/public"
+                  width={141}
+                  height={52}
+                  objectFit="contain"
+                  alt="lumin care logo"
+                  layout="responsive"
+                  className="rounded-lg"
+                  loading="lazy"
+                />
+              </SmoothScrollLink>
             </div>
 
             <div className="flex items-center">
@@ -301,23 +297,42 @@ const Home: NextPage = () => {
 
           {/* Mobile Menu */}
           <ul
-            className={`list-none font-normal lg:font-medium no-underline text-xl px-6 md:hidden transition-all duration-500 ease-in overflow-hidden ${
+            className={`list-none font-normal lg:font-medium no-underline text-xl px-6 md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
               isMenuOpen ? "max-h-32" : "max-h-0"
             }`}
           >
             <li className="py-1">
-              <SmoothScrollLink href="#order-now" onClick={() => setIsMenuOpen(false)}>Order Now</SmoothScrollLink>
+              <SmoothScrollLink
+                href="#order-now"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Order Now
+              </SmoothScrollLink>
             </li>
             <li className="py-1">
-              <SmoothScrollLink href="#reviews" onClick={() => setIsMenuOpen(false)}>Reviews</SmoothScrollLink>
+              <SmoothScrollLink
+                href="#reviews"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Reviews
+              </SmoothScrollLink>
             </li>
             <li className="py-1 pb-2">
-              <SmoothScrollLink href="#questions" onClick={() => setIsMenuOpen(false)}>Questions?</SmoothScrollLink>
+              <SmoothScrollLink
+                href="#questions"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Questions?
+              </SmoothScrollLink>
             </li>
           </ul>
         </nav>
       </header>
-      <main className="mx-auto" id="order-now" style={{ scrollPaddingTop: "2000px" }}>
+      <main
+        className="mx-auto"
+        id="order-now"
+        style={{ scrollPaddingTop: "2000px" }}
+      >
         {/* Product Showcase Section */}
 
         <section className="flex flex-col lg:flex-row max-w-1200">
@@ -484,12 +499,12 @@ const Home: NextPage = () => {
             </section>
 
             {/* CTA */}
-            <section className="px-4 mt-2 mb-4 lg:my-4"
-            ref={buttonContainerRef}
+            <section
+              className="px-4 mt-2 mb-4 lg:my-4"
+              ref={buttonContainerRef}
             >
               <button
                 onClick={handleCheckout}
-                ref={buttonRef}
                 className="px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-sm rounded drop-shadow-xl sticky bottom-1/2 lg:text-base "
               >
                 <div className="flex justify-center items-center gap-2">
@@ -553,7 +568,7 @@ const Home: NextPage = () => {
                   alt="five stars"
                   className="mx-auto"
                 />
-              </div>  
+              </div>
               <div className="text-center mb-4">
                 <p className="text-base leading-normal">
                   <span>This</span>
@@ -704,15 +719,19 @@ const Home: NextPage = () => {
         </section>
 
         {/* Reviews Carousel */}
-        <section style={{ scrollPaddingTop: "2000px" }} id="reviews" className="p-4 my-4 bg-theme-main-light">
+        <section
+          style={{ scrollPaddingTop: "2000px" }}
+          id="reviews"
+          className="p-4 my-4 bg-theme-main-light"
+        >
           <div className="max-w-1200">
             {/* Section Title */}
-            <div className="px-4 mt-10">
+            <div className="px-4 mt-3">
               <h1 className="text-[23px] font-bold text-center">
                 2736+ Verified Reviews
               </h1>
             </div>
-            <div className="w-[108px] mx-auto mb-10">
+            <div className="w-[108px] mx-auto mb-3">
               <img
                 loading="lazy"
                 src="https://imagedelivery.net/3sm7YxHMaTn28jo8W8zvog/16210081-756f-4d28-967d-e6163785d800/public"
@@ -758,9 +777,13 @@ const Home: NextPage = () => {
         </section>
 
         {/* FAQ */}
-        <section style={{ scrollPaddingTop: "2000px" }} id="questions" className="px-4 mt-4 mb-10 max-w-1200">
+        <section
+          style={{ scrollPaddingTop: "2000px" }}
+          id="questions"
+          className="px-4 mt-4 mb-10 max-w-1200"
+        >
           {/* Section Title */}
-          <div className="px-4 my-14">
+          <div className="px-4 my-8">
             <h1 className="text-[23px] font-bold text-center">
               Frequently Asked Questions
             </h1>
@@ -851,6 +874,24 @@ const Home: NextPage = () => {
             </Accordion>
           </div>
         </section>
+        {showBottomCTAButton && (
+          <button
+            onClick={handleCheckout}
+            className="fixed bottom-0 left-0 px-3 py-4 bg-theme-main text-white w-full hover:bg-theme-main-dark transition-colors duration-200 ease-in text-sm rounded drop-shadow-xl lg:text-base "
+          >
+            <div className="flex justify-center items-center gap-2">
+              <span className="pt-0.5">
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="w-4 h-4 lg:w-4 lg:h-5"
+                />
+              </span>
+              <span className="text-white font-bold">
+                Buy with Cash On Delivery
+              </span>
+            </div>
+          </button>
+        )}
       </main>
     </div>
   );
