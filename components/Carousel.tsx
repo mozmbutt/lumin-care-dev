@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSpringCarousel } from "react-spring-carousel";
 
 export const CarouselItem: React.FC<any> = ({ children }) => (
@@ -16,19 +16,40 @@ export const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
     return childrenArray;
   }, [children]);
 
-  const { carouselFragment, slideToItem } =
-    useSpringCarousel({
-      withLoop: true,
-      items: childrenGroups?.map((group, index) => ({
-        id: index,
-        renderItem: (
-          <div className="flex justify-center items-center w-full gap-5">
-            {group}
-          </div>
-        ),
-      })),
-    });
+  const {
+    carouselFragment,
+    slideToItem,
+    useListenToCustomEvent,
+    slideToNextItem,
+    getCurrentActiveItem,
+  } = useSpringCarousel({
+    withLoop: true,
+    items: childrenGroups?.map((group, index) => ({
+      id: index,
+      renderItem: (
+        <div className="flex justify-center items-center w-full gap-5">
+          {group}
+        </div>
+      ),
+    })),
+  });
 
+  useListenToCustomEvent((event) => {
+    if (event.eventName !== "onSlideChange") return; 
+    setActiveIndex(event.currentItem.index);
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      slideToNextItem();
+      const currentItemIndex = getCurrentActiveItem().index;
+      setActiveIndex(currentItemIndex);
+    }, 2500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  });
 
   return (
     <div>
