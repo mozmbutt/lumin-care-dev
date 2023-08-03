@@ -30,7 +30,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md text-sm md:text-base overflow-auto">
-        <div className="bg-white w-[320px] md:w-[500px] rounded-lg shadow-lg p-4 mx-5 my-auto">
+        <div className="bg-white w-[100%] md:w-[500px] rounded-lg shadow-lg p-4 mx-0 md:mx-5 my-auto">
           <div className="flex justify-between items-center">
           <h2 className="font-[500] text-sm lg:text-lg">
             Please fill in the form to order

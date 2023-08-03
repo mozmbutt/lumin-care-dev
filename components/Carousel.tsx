@@ -51,7 +51,7 @@ export const Carousel: React.FC<any> = ({ children, itemsToShow = 1 }) => {
       slideToNextItem();
       const currentItemIndex = getCurrentActiveItem().index;
       setActiveIndex(currentItemIndex);
-    }, 3000);
+    }, 4000);
 
     return () => {
       if(timer){
